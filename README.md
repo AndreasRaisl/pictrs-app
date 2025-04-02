@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Pictrs Photo Application
 
-Things you may want to cover:
+This is a demo application in Ruby on Rails with photo upload and photo editing functionality.  It serves as a base for talking about programming and Rails with the Pictrs development team.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Here is the [*Job description*](https://assets.pictrs.com/downloads/jobs/2025-01-16%20Fullstack%20Entwickler%20f%C3%BCr%20Shopsystem.pdf)
+by [Pictrs](https://pictrs.com/) we are preparing for with this app.
