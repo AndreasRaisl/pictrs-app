@@ -36,6 +36,14 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   # Use sqlite3 as the database for Active Record
   gem "sqlite3", "~> 1.4"
+
+  # Debugging
+  gem 'pry-byebug'
+  gem 'pry-rails'
+
+  # Test with RSpec
+  gem "rspec-rails", '>= 6.0.0.rc1' # Rails 7 support starts with rspec-rails-6.0.0.rc1
+  gem 'factory_bot_rails' # Manage test data
 end
 
 group :development do
@@ -48,4 +56,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+end
+
+group :production do
+  gem "pg"
 end
