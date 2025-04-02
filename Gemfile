@@ -29,7 +29,8 @@ gem "jbuilder"
 gem "bootsnap", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.12"
+gem "mini_magick"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -56,6 +57,18 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+
+   # Not for the should syntax, but for all the nice matchers, e.g. for model validations
+   gem 'shoulda-matchers', '~> 5.0'
+
+   # For stubbing and mocking requests to external services (like Mailjet, sms77 or webhooks)
+   gem "webmock"
+
+   # For automatic screenshots on a failed integration test
+   gem 'capybara-screenshot'
+
+   # for Controller Specs
+   gem 'rails-controller-testing'
 end
 
 group :production do
