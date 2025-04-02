@@ -17,11 +17,11 @@ RSpec.describe StaticPagesController, type: :controller do
     it { is_expected.to have_http_status :success }
   end
 
-  # describe "#about" do
-  #   subject do
-  #     get :about
-  #   end
+  describe "#about" do
+    subject do
+      get :about
+    end
 
-  #   it { is_expected.to have_http_status :success }
-  # end
+    it { is_expected.to have_http_status :success }
+  end
 end

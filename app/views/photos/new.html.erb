@@ -1,0 +1,15 @@
+<h1>Upload a Photo</h1>
+
+<%= form_with model: @photo, local: true, html: { multipart: true } do |form| %>
+  <div class="mb-3">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :image %>
+    <%= form.file_field :image, class: "form-control" %>
+  </div>
+
+  <%= form.submit "Upload", class: "btn btn-primary" %>
+<% end %>

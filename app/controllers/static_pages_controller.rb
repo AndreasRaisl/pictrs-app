@@ -8,4 +8,8 @@ class StaticPagesController < ApplicationController
     # render html: "Hier werden Sie geholfen!!!"
   end
 
+  def about
+
+  end
+
 end
