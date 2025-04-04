@@ -8,4 +8,8 @@ class Photo < ApplicationRecord
   def grayscale_variant
     image.variant(resize_to_limit: [500, 500], combine_options: { colorspace: 'Gray' })
   end
+
+  def taste
+    'delicious'
+  end
 end

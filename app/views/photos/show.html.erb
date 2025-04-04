@@ -1,2 +1,17 @@
-<h1>Photos#show</h1>
-<p>Find me in app/views/photos/show.html.erb</p>
+<h1><%= @photo.title %></h1>
+
+<div class="row">
+  <div class="col">
+    <h5>Color</h5>
+    <%= image_tag @photo.color_variant, class: "img-thumbnail" if @photo.image.attached? %>
+  </div>
+  <div class="col">
+    <h5>Black & White</h5>
+    <%= image_tag @photo.grayscale_variant, class: "img-thumbnail" if @photo.image.attached? %>
+  </div>
+</div>
+
+<div class="mt-4">
+  <h5>Histogram (coming soon)</h5>
+  <p>This is where we’ll generate and show a histogram of the B/W image.</p>
+</div>
