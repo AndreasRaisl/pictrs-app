@@ -24,4 +24,21 @@ RSpec.describe StaticPagesController, type: :controller do
 
     it { is_expected.to have_http_status :success }
   end
+
+  describe "#contact" do
+    subject do
+      get :contact
+    end
+
+    it { is_expected.to have_http_status :success }
+
+  end
+
+  # describe "#mumu" do
+  #   subject do
+  #     get :mumu
+  #   end
+
+  #   it { is_expected.to have_http_status :success }
+  # end
 end

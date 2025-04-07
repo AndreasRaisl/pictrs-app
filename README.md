@@ -20,6 +20,15 @@ Next, migrate the database:
 ```
 $ rails db:migrate
 ```
+Also probably you need to have the imagemagick librarry installed on your system to make the app work correctly.
+On a Linux system like Ubuntu just execute:
+```
+sudo apt-get update
+sudo apt-get install imagemagick
+```
+
+For mac there should be a similar command with brew / homebrew, but find out for yourself.
+
 Finally, run the test suite to verify that everything is working correctly:
 ```
 $ rspec

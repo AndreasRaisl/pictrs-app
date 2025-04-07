@@ -1,19 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe "Photos", type: :request do
-  # describe "GET /index" do
-  #   it "returns http success" do
-  #     get "/photos/index"
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
+  describe "GET /photos" do
+    it "returns http success" do
+      get "/photos/"
+      expect(response).to have_http_status(:success)
+    end
+  end
 
-  # describe "GET /new" do
-  #   it "returns http success" do
-  #     get "/photos/new"
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
+  describe "GET /new" do
+    it "returns http success" do
+      get "/photos/new"
+      expect(response).to have_http_status(:success)
+    end
+  end
 
   # describe "GET /create" do
   #   it "returns http success" do
@@ -24,7 +24,7 @@ RSpec.describe "Photos", type: :request do
 
   # describe "GET /show" do
   #   it "returns http success" do
-  #     get "/photos/show"
+  #     get "/photos/1"
   #     expect(response).to have_http_status(:success)
   #   end
   # end

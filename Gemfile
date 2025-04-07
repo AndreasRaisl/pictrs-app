@@ -8,6 +8,7 @@ gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
+gem "bootstrap-sass"
 gem "sassc-rails", "~> 2.1.2"
 
 # Use the Puma web server [https://github.com/puma/puma]
