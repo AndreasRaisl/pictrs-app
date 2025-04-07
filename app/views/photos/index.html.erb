@@ -1,13 +1,17 @@
 <h1> Alle Fotos </h1>
 <% @photos.each do |photo| %>
-<br /> <br />
-  <p>
-    <strong> Bildtitel: </strong>
-    <%= photo.title %>
-  </p>
+  <br /> <br />
+  <div>
+    <p>
+      <strong> Bildtitel: </strong>
+      <%= photo.title %>
+    </p>
+  </div>
 
   <% if photo.image_thumbnail %>
-    <%= link_to image_tag(photo.image_thumbnail), photo.image if photo.image.attached? %>
+    <p>
+      <%= link_to image_tag(photo.image_thumbnail), photo.image if photo.image.attached? %>
+    </p>
   <% end %>
   <br /> <br />
 
@@ -20,16 +24,16 @@
   data: { confirm: "Are you sure you want to delete this photo?" },
   class: "btn btn-danger" %>
 
-  <div style="display: flex; gap: 20px; margin-bottom: 20px;">
+  <!-- <div style="display: flex; gap: 20px; margin-bottom: 20px;">
     <div>
       <p>Color</p>
-      <%= image_tag photo.color_variant, alt: "Color version" %>
+      <%= image_tag photo.resized, alt: "Color version" %>
     </div>
     <div>
       <p>Grayscale</p>
       <%= image_tag photo.grayscale_variant, alt: "Grayscale version" %>
     </div>
-  </div>
+  </div> -->
 <% end %>
 
 
@@ -37,7 +41,7 @@
 
 <!-- <h1>Photo Gallery</h1> -->
 <br> <br>
-<%= link_to "Upload New Photo", new_photo_path %>
+<%= link_to "Weiteres Foto hochladen", new_photo_path %>
 
 <!-- <hr>
 
@@ -45,7 +49,7 @@
   <div style="display: flex; gap: 20px; margin-bottom: 30px;">
     <div>
       <strong>Color</strong><br>
-      <%= image_tag photo.color_variant, alt: "Color image" if photo.image.attached? %>
+      <%= image_tag photo.resized, alt: "Color image" if photo.image.attached? %>
     </div>
     <div>
       <strong>Grayscale</strong><br>

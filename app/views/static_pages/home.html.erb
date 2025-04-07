@@ -7,8 +7,11 @@
   </p>
 
   <%= link_to "Fotos ansehen", photos_path, class: "btn btn-lg btn-primary" %>
-  <%= link_to "Fotos hochladen", '#', class: "btn btn-lg btn-primary" %>
-  <%#= image_tag("kleine_Dampflok.jpg", alt: "kleine Dampflok") %>
+  <%= link_to "Fotos hochladen", upload_path, class: "btn btn-lg btn-primary" %>
+  <br /> <br />
+  <div>
+    <%= image_tag("kleine_Dampflok.jpg", style: "width: 300px; height: 300px;", alt: "kleine Dampflok") %>
+  </div>
 </div>
 <%= link_to image_tag("logo_pictrs.png", alt: "Pictrs logo", width: "200"),
 "https://www.pictrs.com/" %>

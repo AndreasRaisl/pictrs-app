@@ -1,8 +1,24 @@
 require 'rails_helper'
 
 RSpec.describe Photo, type: :model do
-  let(:photo) { Photo.new(title: "Test Photo") }
-  #subject(:photo) { build(:photo) }
+  #let(:photo) { Photo.new(title: "Test Photo") }
+  subject(:photo) { build(:photo) }
+
+  it "is valid with valid attributes" do
+  end
+
+  it 'has a valid factory' do
+    expect(subject).to be_valid
+  end
+
+  it "has a factory with correct title initialization" do
+    expect(subject.title).to eq "Test Photo"
+  end
+
+  it "is invalid without a title" do
+    subject.title = nil
+    expect(subject).to_not be_valid
+  end
 
   describe "#color_variant" do
     it "resizes the image" do

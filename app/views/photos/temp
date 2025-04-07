@@ -1,0 +1,12 @@
+<!-- app/views/photos/show.html.erb -->
+<!-- <h1>Image Processing Preview</h1>
+
+<p>Original:</p>
+<%= image_tag @photo.image if @photo.image.attached? %>
+
+<p>Grayscale Variant 1:</p>
+<%= image_tag @photo.grayscale_variant_1 if @photo.image.attached? %>
+
+<p>Grayscale Variant 2:</p>
+<%= image_tag @photo.grayscale_variant_2 if @photo.image.attached? %> -->
+

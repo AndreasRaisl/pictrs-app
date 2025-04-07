@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :photo do
-    title { "MyString" }
+    title { "Test Photo" }
   end
 end

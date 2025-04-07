@@ -1,24 +1,51 @@
 <h1><%= @photo.title %></h1>
 
-<%= @photo.image %>
+<!-- <% if @photo.image.attached? %>
+  <p>Original:</p>
+  <%= image_tag(@photo.image) %>
+<% else %>
+  Es wurde kein Foto hierzu hochgeladen
+<% end %> -->
 
-<div class="row">
-  <div class="col">
-    <h5>Color</h5>
-    <%= image_tag @photo.color_variant, class: "img-thumbnail" if @photo.image.attached? %>
+<br /> <br />
+<% if @photo.image.attached? %>
+  <div class="row">
+    <div class="col">
+      <h5>Original</h5>
+      <%= image_tag @photo.image, class: "img-thumbnail" if @photo.image.attached? %>
+    </div>
+
+    <div class="col">
+      <h5>In Farbe</h5>
+      <%= image_tag @photo.resized, class: "img-thumbnail" if @photo.image.attached? %>
+    </div>
+
+    <div class="col">
+      <h5>Schwarzweiss</h5>
+      <%= image_tag @photo.grayscale_variant, class: "img-thumbnail" if @photo.image.attached? %>
+    </div>
+
+    <div class="col">
+      <h5>nach rechts gekippt mit grünem Hintergrund</h5>
+      <%= image_tag @photo.rotated_right, class: "img-thumbnail" if @photo.image.attached? %>
+    </div>
+
+    <div class="col">
+      <h5>nach rechts gekippt mit transparentem Hintergrund</h5>
+      <%= image_tag @photo.rotated_right_transparent, class: "img-thumbnail" if @photo.image.attached? %>
+    </div>
   </div>
-  <div class="col">
-    <h5>Black & White</h5>
-    <%= image_tag @photo.grayscale_variant, class: "img-thumbnail" if @photo.image.attached? %>
-  </div>
-</div>
+<% else %>
+  Es wurde hierzu kein Foto hochgeladen
+<% end %>
 
 <div class="mt-4">
   <h5>Histogram (coming soon)</h5>
   <p>This is where we’ll generate and show a histogram of the B/W image.</p>
 </div>
 
-
+<%#= link_to "Foto bearbeiten", edit_photo_path(@photo) %>
+<%= link_to "Zurück zur Übersicht", photos_path %>
 
 <!-- app/views/photos/show.html.erb -->
 <!-- <h1>Your Uploaded Photo</h1>
@@ -34,16 +61,4 @@
 
 
 
-
-<!-- app/views/photos/show.html.erb -->
-<!-- <h1>Image Processing Preview</h1>
-
-<p>Original:</p>
-<%= image_tag @photo.image if @photo.image.attached? %>
-
-<p>Grayscale Variant 1:</p>
-<%= image_tag @photo.grayscale_variant_1 if @photo.image.attached? %>
-
-<p>Grayscale Variant 2:</p>
-<%= image_tag @photo.grayscale_variant_2 if @photo.image.attached? %> -->
 
