@@ -9,7 +9,7 @@ class Photo < ApplicationRecord
   end
 
 
-  def resized
+  def resize
     return unless image.attached?
     image.variant(resize_to_limit: [500, 500])
   end
@@ -34,14 +34,22 @@ class Photo < ApplicationRecord
     image.variant(combine_options: { colorspace: "Gray", resize: "200x200" }).processed
   end
 
-  def rotated_right
+  def rotate_right
     return unless image.attached?
     image.variant(resize_to_limit: [500, 500], rotate: [45, { background: '#0F0' }])
   end
 
-  def rotated_right_transparent
+  def rotate_right_transparent
     return unless image.attached?
     image.variant(format: :png, resize_to_limit: [500, 500], rotate: [45, { background: 'aqua' }])
+  end
+
+  def image_width
+    image.blob.metadata[:width]
+  end
+
+  def image_height
+    image.blob.metadata[:height]
   end
 
 end

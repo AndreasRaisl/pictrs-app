@@ -13,11 +13,15 @@
     <div class="col">
       <h5>Original</h5>
       <%= image_tag @photo.image, class: "img-thumbnail" if @photo.image.attached? %>
+      <div>
+        Breite: <%= @photo.width %>
+        Höhe: <%= @photo.height %>
+      </div>
     </div>
 
     <div class="col">
       <h5>In Farbe</h5>
-      <%= image_tag @photo.resized, class: "img-thumbnail" if @photo.image.attached? %>
+      <%= image_tag @photo.resize, class: "img-thumbnail" if @photo.image.attached? %>
     </div>
 
     <div class="col">
@@ -27,12 +31,12 @@
 
     <div class="col">
       <h5>nach rechts gekippt mit grünem Hintergrund</h5>
-      <%= image_tag @photo.rotated_right, class: "img-thumbnail" if @photo.image.attached? %>
+      <%= image_tag @photo.rotate_right, class: "img-thumbnail" if @photo.image.attached? %>
     </div>
 
     <div class="col">
       <h5>nach rechts gekippt mit transparentem Hintergrund</h5>
-      <%= image_tag @photo.rotated_right_transparent, class: "img-thumbnail" if @photo.image.attached? %>
+      <%= image_tag @photo.rotate_right_transparent, class: "img-thumbnail" if @photo.image.attached? %>
     </div>
   </div>
 <% else %>

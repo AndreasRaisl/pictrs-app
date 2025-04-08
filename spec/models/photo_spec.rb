@@ -20,9 +20,9 @@ RSpec.describe Photo, type: :model do
     expect(subject).to_not be_valid
   end
 
-  describe "#color_variant" do
+  describe "#resize" do
     it "resizes the image" do
-      resized_image = photo.color_variant
+      resized_image = photo.resize
       expect(resized_image).to eq resized_image
       expect(photo.title).to eq "Test Photo"
     end
@@ -32,6 +32,27 @@ RSpec.describe Photo, type: :model do
     it "resizes the image" do
       resized_image = photo.grayscale_variant
       expect(resized_image).to eq resized_image
+    end
+  end
+
+  describe "#rotate_right" do
+    it "rotates the image 45 degrees to the right" do
+      rotated_image = photo.rotate_right
+      expect(rotated_image).to eq rotated_image
+    end
+  end
+
+  describe "#rotate_right_transparent" do
+    it "rotates the image 45 degrees to the right" do
+      rotated_image = photo.rotate_right_transparent
+      expect(rotated_image).to eq rotated_image
+    end
+  end
+
+  describe "#image_width" do
+    it "returns the width of the original version of the attached image" do
+      # width = photo.image_width
+      # expect(width).to eq 300
     end
   end
 

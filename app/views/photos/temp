@@ -10,3 +10,29 @@
 <p>Grayscale Variant 2:</p>
 <%= image_tag @photo.grayscale_variant_2 if @photo.image.attached? %> -->
 
+
+<!-- <div style="display: flex; gap: 20px; margin-bottom: 20px;">
+    <div>
+      <p>Color</p>
+      <%= image_tag photo.resize, alt: "Color version" %>
+    </div>
+    <div>
+      <p>Grayscale</p>
+      <%= image_tag photo.grayscale_variant, alt: "Grayscale version" %>
+    </div>
+  </div> -->
+
+
+  <% @photos.each do |photo| %>
+  <div style="display: flex; gap: 20px; margin-bottom: 30px;">
+    <div>
+      <strong>Color</strong><br>
+      <%= image_tag photo.resize, alt: "Color image" if photo.image.attached? %>
+    </div>
+    <div>
+      <strong>Grayscale</strong><br>
+      <%= image_tag photo.grayscale_variant, alt: "Grayscale image" if photo.image.attached? %>
+    </div>
+  </div>
+<% end %> -->
+
