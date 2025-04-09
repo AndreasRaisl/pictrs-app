@@ -1,42 +1,40 @@
 <h1><%= @photo.title %></h1>
 
-<!-- <% if @photo.image.attached? %>
-  <p>Original:</p>
-  <%= image_tag(@photo.image) %>
-<% else %>
-  Es wurde kein Foto hierzu hochgeladen
-<% end %> -->
-
 <br /> <br />
 <% if @photo.image.attached? %>
   <div class="row">
     <div class="col">
       <h5>Original</h5>
-      <%= image_tag @photo.image, class: "img-thumbnail" if @photo.image.attached? %>
+      <%= image_tag @photo.image, class: "img-thumbnail" %>
       <div>
-        Breite: <%= @photo.width %>
-        Höhe: <%= @photo.height %>
+        Breite: <%= @photo.image_width %>
+        Höhe: <%= @photo.image_height %>
       </div>
     </div>
 
     <div class="col">
       <h5>In Farbe</h5>
-      <%= image_tag @photo.resize, class: "img-thumbnail" if @photo.image.attached? %>
+      <%= image_tag @photo.resize, class: "img-thumbnail" %>
     </div>
 
     <div class="col">
-      <h5>Schwarzweiss</h5>
-      <%= image_tag @photo.grayscale_variant, class: "img-thumbnail" if @photo.image.attached? %>
+      <h5>Schwarzweiss 1. Variante</h5>
+      <%= image_tag @photo.grayscale_variant, class: "img-thumbnail" %>
+    </div>
+
+    <div class="col">
+      <h5>Schwarzweiss 2. Variante</h5>
+      <%= image_tag @photo.grayscale_variant, class: "img-thumbnail" %>
     </div>
 
     <div class="col">
       <h5>nach rechts gekippt mit grünem Hintergrund</h5>
-      <%= image_tag @photo.rotate_right, class: "img-thumbnail" if @photo.image.attached? %>
+      <%= image_tag @photo.rotate_right, class: "img-thumbnail" %>
     </div>
 
     <div class="col">
       <h5>nach rechts gekippt mit transparentem Hintergrund</h5>
-      <%= image_tag @photo.rotate_right_transparent, class: "img-thumbnail" if @photo.image.attached? %>
+      <%= image_tag @photo.rotate_right_transparent, class: "img-thumbnail" %>
     </div>
   </div>
 <% else %>
@@ -51,10 +49,10 @@
 <%#= link_to "Foto bearbeiten", edit_photo_path(@photo) %>
 <%= link_to "Zurück zur Übersicht", photos_path %>
 
-<!-- app/views/photos/show.html.erb -->
-<!-- <h1>Your Uploaded Photo</h1>
 
-<% if @photo.image.attached? %>
+
+
+<!-- <% if @photo.image.attached? %>
   <p>Original:</p>
   <%= image_tag @photo.image.variant(resize_to_limit: [500, 500]) %>
 <% else %>

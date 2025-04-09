@@ -22,10 +22,25 @@ RSpec.describe "Photos", type: :system do
 
       end
     end
+  end
 
+  describe "upload" do
+    it "the upload page shows a message" do
+      visit upload_path
+      expect(page).to have_content "Fotos hochladen"
+    end
+
+    it "allows to upload a new photo successfully" do
+      expect(Photo.count).to eq 0
+      visit upload_path
+      fill_in "Titel", with: "Example Photo Title 1"
+      attach_file "photo_image", Rails.root.join("spec/fixtures/files/test_image.jpg")
+      click_on "Upload"
+      visit photos_path
+      expect(page).to have_content("Example Photo Title 1")
+      expect(Photo.count).to eq 1
+      photo = Photo.last
+      expect(page).to have_css("img[src*='#{photo.image.filename}']")
+    end
   end
 end
-
-
-
-

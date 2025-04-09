@@ -2,6 +2,14 @@
 <h2> Laden Sie ein einzelnes Foto hoch </h2>
 
 <%= form_with model: @photo, local: true, html: { multipart: true } do |form| %>
+  <% if form.object.errors.any? %>
+    <div>
+      <% form.object.errors.full_messages.each do |message| %>
+        <div style="color: red;"> <%= message %> </div>
+      <% end %>
+    </div>
+  <% end %>
+
   <div class="mb-3">
     <%= form.label :title, "Titel", style: "display: block" %>
     <%= form.text_field :title, class: "form-control" %>

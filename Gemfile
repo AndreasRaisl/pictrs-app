@@ -75,3 +75,5 @@ end
 group :production do
   gem "pg"
 end
+
+gem "database_cleaner-active_record", "~> 2.2"

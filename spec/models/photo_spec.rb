@@ -1,8 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Photo, type: :model do
-  #let(:photo) { Photo.new(title: "Test Photo") }
-  subject(:photo) { build(:photo) }
+RSpec.describe Photo, type: :model, image_processing: true do
+  include ActiveJob::TestHelper
+
+  subject(:photo) { create(:photo) }
 
   it "is valid with valid attributes" do
   end
@@ -15,16 +16,20 @@ RSpec.describe Photo, type: :model do
     expect(subject.title).to eq "Test Photo"
   end
 
+  it "has a factory that attaches an image" do
+    expect(subject.image).to be_attached
+  end
+
   it "is invalid without a title" do
     subject.title = nil
     expect(subject).to_not be_valid
   end
 
   describe "#resize" do
-    it "resizes the image" do
+    it "returns a resized variant with 500x500 limit" do
       resized_image = photo.resize
-      expect(resized_image).to eq resized_image
-      expect(photo.title).to eq "Test Photo"
+      expect(resized_image).to be_an_instance_of(ActiveStorage::VariantWithRecord)
+      expect(resized_image.variation.transformations).to include(resize_to_limit: [500, 500])
     end
   end
 
@@ -51,8 +56,21 @@ RSpec.describe Photo, type: :model do
 
   describe "#image_width" do
     it "returns the width of the original version of the attached image" do
-      # width = photo.image_width
-      # expect(width).to eq 300
+      perform_enqueued_jobs do
+        photo.image.reload
+        width = photo.image_width
+        expect(width).to eq 600
+      end
+    end
+  end
+
+  describe "#image_height" do
+    it "returns the height of the original version of the attached image" do
+      perform_enqueued_jobs do
+        photo.image.reload
+        width = photo.image_height
+        expect(width).to eq 900
+      end
     end
   end
 
