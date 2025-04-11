@@ -30,6 +30,21 @@ class PhotosController < ApplicationController
     redirect_to photos_path, notice: "Das Foto wurde erfolgreich entfernt"
   end
 
+  def create_variant
+    binding.pry
+     puts "[DEBUG] TURBO STREAM FORMAT: #{request.format.turbo_stream?}"
+    @photo = Photo.find(params[:id])
+
+    # Simulate generating a new variant
+    # (you can replace this with real logic!)
+    @new_variant = @photo.image.variant(resize_to_limit: [100 + rand(200), 100 + rand(200)]).processed
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to photo_path(@photo) } # fallback
+    end
+  end
+
   private
 
   def photo_params

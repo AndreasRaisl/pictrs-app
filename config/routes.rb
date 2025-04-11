@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
-  resources :photos, only: [:index, :new, :create, :show, :destroy, :edit]
+
+  resources :photos do
+    post :create_variant, on: :member
+  end
 
   get 'help', to: 'static_pages#help'
   get 'about', to: 'static_pages#about'

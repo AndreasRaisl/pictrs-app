@@ -3,7 +3,7 @@
 
 <%= form_with model: @photo, local: true, html: { multipart: true } do |form| %>
   <% if form.object.errors.any? %>
-    <div>
+    <div class="errors">
       <% form.object.errors.full_messages.each do |message| %>
         <div style="color: red;"> <%= message %> </div>
       <% end %>
@@ -26,7 +26,6 @@
 
   <%= form.submit "Upload", class: "btn btn-primary" %>
 <% end %>
-
 
 <!-- <h1>Upload a New Photo</h1>
 
@@ -54,9 +53,6 @@
 
 <%= link_to "Back to Gallery", photos_path %>
  -->
-
-
-
 
 
 

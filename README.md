@@ -27,6 +27,17 @@ sudo apt-get update
 sudo apt-get install imagemagick
 ```
 
+```
+bin/importmap pin histogram
+```
+```
+bin/importmap pin chart.js
+```
+
+```
+rm vendor/javascript/histogram.js 2>/dev/null
+```
+
 For mac there should be a similar command with brew / homebrew, but find out for yourself.
 
 Finally, run the test suite to verify that everything is working correctly:

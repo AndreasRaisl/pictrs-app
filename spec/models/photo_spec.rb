@@ -5,9 +5,6 @@ RSpec.describe Photo, type: :model, image_processing: true do
 
   subject(:photo) { create(:photo) }
 
-  it "is valid with valid attributes" do
-  end
-
   it 'has a valid factory' do
     expect(subject).to be_valid
   end
@@ -33,9 +30,16 @@ RSpec.describe Photo, type: :model, image_processing: true do
     end
   end
 
-  describe "#grayscale_variant" do
+  describe "#grayscale_variant_1" do
     it "resizes the image" do
-      resized_image = photo.grayscale_variant
+      resized_image = photo.grayscale_variant_1
+      expect(resized_image).to eq resized_image
+    end
+  end
+
+  describe "#grayscale_variant_2" do
+    it "resizes the image" do
+      resized_image = photo.grayscale_variant_2
       expect(resized_image).to eq resized_image
     end
   end

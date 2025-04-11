@@ -36,3 +36,22 @@
   </div>
 <% end %> -->
 
+
+
+
+
+
+<%= turbo_frame_tag "dynamic_variants" do %>
+      <div id="variant-list">
+        <!-- Initially empty -->
+      </div>
+
+      <%= button_to "Weitere Variante erstellen",
+            create_variant_photo_path(@photo),
+            method: :post,
+            data: { turbo_frame: "dynamic_variants" },
+            class: "btn btn-outline-primary mt-3" %>
+    <% end %>
+
+
+

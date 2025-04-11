@@ -21,7 +21,7 @@ class Photo < ApplicationRecord
   #   #   processor: :mini_magick,
   #   #   combine_options: { resize: '500x500>', colorspace: 'Gray' }
   #   # )
-  end
+  # end
 
   def grayscale_variant_1
     return unless image.attached?

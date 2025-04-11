@@ -1,0 +1,8 @@
+<div class="mt-4">
+  <% if variant.present? %>
+    <h5 class="variant-title">Neu generierte Variante</h5>
+    <%= image_tag variant, class: "img-thumbnail w-100" %>
+  <% else %>
+    <p>No variant to display</p>
+  <% end %>
+</div>

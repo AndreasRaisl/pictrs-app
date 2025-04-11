@@ -1,63 +1,76 @@
+
 <h1><%= @photo.title %></h1>
 
 <br /> <br />
 <% if @photo.image.attached? %>
   <div class="row">
     <div class="col">
-      <h5>Original</h5>
+      <h5 class="variant-title">Original</h5>
       <%= image_tag @photo.image, class: "img-thumbnail" %>
-      <div>
+      <div class="image-dimensions">
         Breite: <%= @photo.image_width %>
         Höhe: <%= @photo.image_height %>
       </div>
     </div>
 
     <div class="col">
-      <h5>In Farbe</h5>
+      <h5 class="variant-title">In Farbe</h5>
       <%= image_tag @photo.resize, class: "img-thumbnail" %>
     </div>
 
     <div class="col">
-      <h5>Schwarzweiss 1. Variante</h5>
-      <%= image_tag @photo.grayscale_variant, class: "img-thumbnail" %>
+      <h5 class="variant-title">Schwarzweiß – Variante 1</h5>
+      <%= image_tag @photo.grayscale_variant_1, class: "img-thumbnail", id: "grayscale-image_1" %>
     </div>
 
     <div class="col">
-      <h5>Schwarzweiss 2. Variante</h5>
-      <%= image_tag @photo.grayscale_variant, class: "img-thumbnail" %>
+      <h5 class="variant-title">Schwarzweiß – Variante 2</h5>
+      <%= image_tag @photo.grayscale_variant_2, class: "img-thumbnail" %>
     </div>
 
-    <div class="col">
-      <h5>nach rechts gekippt mit grünem Hintergrund</h5>
-      <%= image_tag @photo.rotate_right, class: "img-thumbnail" %>
+    <div class="mt-4">
+      <div class="histogram-container">
+        <h3 class="variant-title">Grayscale Histogram</h3>
+        <canvas id="histogram" width="400" height="200"></canvas>
+        <%= image_tag @photo.grayscale_variant_1, id: "grayscale-image", style: "display: none;" %>
+      </div>
     </div>
 
-    <div class="col">
-      <h5>nach rechts gekippt mit transparentem Hintergrund</h5>
-      <%= image_tag @photo.rotate_right_transparent, class: "img-thumbnail" %>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <h5 class="variant-title">Gekippt mit grünem Hintergrund</h5>
+        <%= image_tag @photo.rotate_right, class: "img-thumbnail w-100" %>
+      </div>
+      <div class="col-md-6">
+        <h5 class="variant-title">Gekippt mit transparentem Hintergrund</h5>
+        <%= image_tag @photo.rotate_right_transparent, class: "img-thumbnail w-100" %>
+      </div>
     </div>
-  </div>
+
+    <h4>Weitere Varianten</h4>
+    <%= turbo_frame_tag "dynamic_variants" do %>
+      <div id="variant-list"></div>
+      <%= form_with url: create_variant_photo_path(@photo), method: :post, data: { turbo_frame: "dynamic_variants" }, local: false  do %>
+        <%= submit_tag "Weitere Variante erstellen", class: "btn btn-outline-primary mt-3" %>
+      <% end %>
+    <% end %>  
+ 
+
 <% else %>
   Es wurde hierzu kein Foto hochgeladen
 <% end %>
 
-<div class="mt-4">
-  <h5>Histogram (coming soon)</h5>
-  <p>This is where we’ll generate and show a histogram of the B/W image.</p>
+
+
+<div class="photo-actions">
+  <%= link_to "Foto bearbeiten", edit_photo_path(@photo) %>
+  <%= link_to "Zurück zur Übersicht", photos_path %>
 </div>
 
-<%#= link_to "Foto bearbeiten", edit_photo_path(@photo) %>
-<%= link_to "Zurück zur Übersicht", photos_path %>
 
 
 
 
-<!-- <% if @photo.image.attached? %>
-  <p>Original:</p>
-  <%= image_tag @photo.image.variant(resize_to_limit: [500, 500]) %>
-<% else %>
-  <p>No image uploaded.</p>
-<% end %> -->
 
 
 
