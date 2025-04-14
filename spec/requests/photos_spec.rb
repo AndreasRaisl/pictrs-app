@@ -14,19 +14,4 @@ RSpec.describe "Photos", type: :request do
       expect(response).to have_http_status(:success)
     end
   end
-
-  # describe "GET /create" do
-  #   it "returns http success" do
-  #     get "/photos/create"
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
-
-  # describe "GET /show" do
-  #   it "returns http success" do
-  #     get "/photos/1"
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
-
 end

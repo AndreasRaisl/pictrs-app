@@ -21,7 +21,6 @@ class PhotosController < ApplicationController
   end
 
   def edit
-
   end
 
   def destroy
@@ -35,8 +34,7 @@ class PhotosController < ApplicationController
      puts "[DEBUG] TURBO STREAM FORMAT: #{request.format.turbo_stream?}"
     @photo = Photo.find(params[:id])
 
-    # Simulate generating a new variant
-    # (you can replace this with real logic!)
+    # Generate another variant by setting a random size
     @new_variant = @photo.image.variant(resize_to_limit: [100 + rand(200), 100 + rand(200)]).processed
 
     respond_to do |format|

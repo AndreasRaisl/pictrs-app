@@ -53,27 +53,13 @@
       <%= form_with url: create_variant_photo_path(@photo), method: :post, data: { turbo_frame: "dynamic_variants" }, local: false  do %>
         <%= submit_tag "Weitere Variante erstellen", class: "btn btn-outline-primary mt-3" %>
       <% end %>
-    <% end %>  
- 
+    <% end %>
 
 <% else %>
   Es wurde hierzu kein Foto hochgeladen
 <% end %>
 
-
-
 <div class="photo-actions">
   <%= link_to "Foto bearbeiten", edit_photo_path(@photo) %>
   <%= link_to "Zurück zur Übersicht", photos_path %>
 </div>
-
-
-
-
-
-
-
-
-
-
-

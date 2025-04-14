@@ -13,25 +13,13 @@ class Photo < ApplicationRecord
     image.variant(resize_to_limit: [500, 500])
   end
 
-  # def grayscale_variant
-  #   return unless image.attached?
-  #   image.variant(resize_to_limit: [500, 500], colorspace: 'Gray') #, combine_options: { colorspace: 'Gray' })
-  #   # image.variant(combine_options: { resize: '500x500>', colorspace: 'Gray' })
-  #   # image.variant(
-  #   #   processor: :mini_magick,
-  #   #   combine_options: { resize: '500x500>', colorspace: 'Gray' }
-  #   # )
-  # end
-
   def grayscale_variant_1
     return unless image.attached?
-    # image.variant(combine_options: { colorspace: "Gray", resize: "200x200" }).processed
     image.variant(resize: "200x200", colorspace: "Gray")
   end
 
   def grayscale_variant_2
     return unless image.attached?
-    #image.variant(combine_options: { colorspace: "Gray", resize: "300x300^", gravity: "center", extent: "300x300" }).processed
     image.variant(resize: "300x300^", gravity: "center", extent: "300x300", colorspace: "Gray")
   end
 
@@ -42,7 +30,7 @@ class Photo < ApplicationRecord
 
   def rotate_right_transparent
     return unless image.attached?
-    image.variant(format: :png, resize_to_limit: [500, 500], rotate: [45, { background: 'aqua' }])
+    image.variant(format: :png, resize_to_limit: [500, 500], rotate: [45, { background: 'transparent' }])
   end
 
   def image_width
@@ -52,5 +40,4 @@ class Photo < ApplicationRecord
   def image_height
     image.blob.metadata[:height]
   end
-
 end

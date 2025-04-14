@@ -8,7 +8,6 @@
         <strong> Bildtitel: <%= photo.title %></strong>
       </p>
     </div>
-
     <div>
       <% if photo.image_thumbnail %>
         <p>
@@ -16,7 +15,6 @@
         </p>
     <% end %>
     <br />
-
     <%= link_to "Foto anzeigen", photo %>
     <br /> <br />
 
@@ -35,11 +33,5 @@
   <h2> Es sind noch keine Fotos hochgeladen </h2>
 <% end %>
 
-
-
-
-
 <br> <br>
 <%= link_to "Weiteres Foto hochladen", new_photo_path %>
-
-
